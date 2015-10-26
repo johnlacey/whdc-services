@@ -1,3 +1,11 @@
+<?php 
+session_start(); 
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin']!=true)){ 
+	// There was a problem, redirect to login page
+	header('Location: index.php'); 
+	exit; 
+}
+?>
 <?php
 
 // 1. Create database connection 
