@@ -1,11 +1,26 @@
+<?php 
+session_start(); 
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin']!=true)){ 
+	// There was a problem, redirect to login page
+	header('Location: index.php'); 
+	exit; 
+}
+?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Overview</title>
 </head>
 
 <body>
+<?php
+if (isset($_SESSION['loggedin']) && ($_SESSION['loggedin']==true)){ 
+	echo "Hello " . $_SESSION['username'];
+	echo " <a href='logout.php'>Log out?</a>";  
+	echo "<br><br>"; 
+}
+?> 
 <table border="1">
 <tr>
 <th>Name</td>
